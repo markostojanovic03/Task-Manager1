@@ -4,7 +4,7 @@ from datetime import datetime
 
 FILE_NAME = "tasks.json"
 
-#Ucitavanje podataka iz json-a
+#Učitavanje podataka iz json-a
 def load_tasks():
     if not os.path.exists(FILE_NAME):
         return []
@@ -17,11 +17,11 @@ def save_tasks(tasks):
 # Meni za korisnika
 def show_menu():
     print("\n -- Task Manager --")
-    print("1. Prikazi zadatke")
+    print("1. Prikaži zadatke")
     print("2. Dodaj zadatke")
-    print("3. Izbrisi zadatak")
-    print("4. Oznaci zadatak kao zavrsen")
-    print("5. Oznaci zadatak kao nezavrsen")
+    print("3. Izbriši zadatak")
+    print("4. Označi zadatak kao završen")
+    print("5. Označi zadatak kao nezavršen")
     print("6. Izlaz")
 #Ispis svih zadataka
 def list_tasks(tasks):
@@ -48,13 +48,13 @@ if __name__ == "__main__":
                     datetime.strptime(deadline, "%Y-%m-%d")
                     break
                 except ValueError:
-                    print("Nevazeci datum! Pokusaj ponovo (format: YYYY-MM-DD).")
+                    print("Nevažeći datum! Pokušaj ponovo (format: YYYY-MM-DD).")
 
             while True:
                 priority = input("Unesi prioritet (visok, srednji, nizak): ").lower()
                 if priority  in ("visok", "srednji", "nizak"):
                     break
-                print("Nevazeci prioritet! Pokusaj ponovo.")
+                print("Nevažeći prioritet! Pokušaj ponovo.")
 
             tasks.append({"title": title,
                           "priority": priority,
@@ -65,7 +65,7 @@ if __name__ == "__main__":
             print("Zadatak dodat.")
         elif choice == "3":
             list_tasks(tasks)
-            index = int(input("Unesi redni broj zadatka koji zelis da obrises: ")) - 1
+            index = int(input("Unesi redni broj zadatka koji želiš da obrišeš: ")) - 1
             if 0 <= index < len(tasks):
                 deleted = tasks.pop(index)
                 save_tasks(tasks)
@@ -74,11 +74,11 @@ if __name__ == "__main__":
                 print("Neispravan broj zadatka")
         elif choice == "4":
             list_tasks(tasks)
-            index = int(input("Unesi redni broj zadatka koji zelis da oznacis da je zavrsen: ")) - 1
+            index = int(input("Unesi redni broj zadatka koji zeliš da označiš da je završen: ")) - 1
             if 0 <= index < len(tasks):
                 tasks[index]["completed"] = True
                 save_tasks(tasks)
-                print("Zadatak oznacen kao zavrsen.")
+                print("Zadatak označen kao završen.")
             else:
                 print("Neispravan broj zadatka")
         elif choice == "5":
@@ -87,7 +87,7 @@ if __name__ == "__main__":
             if 0 <= index < len(tasks):
                 tasks[index]["completed"] = False
                 save_tasks(tasks)
-                print("Zadatak označen kao nezavrsen.")
+                print("Zadatak označen kao nezavršen.")
                 list_tasks(tasks)
             else:
                 print("Neispravan broj zadatka.")
@@ -96,6 +96,7 @@ if __name__ == "__main__":
             break
         else:
             print("Nepoznata opcija! Probaj opet.")
+
 
 
 
