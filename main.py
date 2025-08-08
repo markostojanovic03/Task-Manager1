@@ -48,7 +48,7 @@ if __name__ == "__main__":
                     datetime.strptime(deadline, "%Y-%m-%d")
                     break
                 except ValueError:
-                    print("Nevažeći datum! Pokušaj ponovo (format: YYYY-MM-DD).")
+                    print("Nevazeci datum! Pokusaj ponovo (format: YYYY-MM-DD).")
 
             while True:
                 priority = input("Unesi prioritet (visok, srednji, nizak): ").lower()
@@ -87,7 +87,7 @@ if __name__ == "__main__":
             if 0 <= index < len(tasks):
                 tasks[index]["completed"] = False
                 save_tasks(tasks)
-                print("Zadatak označen kao nezavršen.")
+                print("Zadatak označen kao nezavrsen.")
                 list_tasks(tasks)
             else:
                 print("Neispravan broj zadatka.")
@@ -96,5 +96,6 @@ if __name__ == "__main__":
             break
         else:
             print("Nepoznata opcija! Probaj opet.")
+
 
 
